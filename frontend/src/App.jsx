@@ -1,4 +1,5 @@
 import React from "react";
+import Navigationbar from "./components/Navigationbar";   
 import Register from "./components/Register";
 import { useEffect } from "react";
 import { requestForToken, onMessageListener } from "../firebaseConfig.js";
@@ -22,16 +23,12 @@ const App = () => {
       })
       .catch((err) => console.log("Failed to receive foreground notification:", err));
   }, []);
-  return <Register />;
-};
-
-/*
- function App() {
   return (
     <div>
+      <Navigationbar />
       <Register />
     </div>
   );
-} 
-*/
+};
+
 export default App;

@@ -1,11 +1,11 @@
 import mysql.connector
 from mysql.connector import Error
-from dotenv import load_dotenv,dotenv_values
+from dotenv import load_dotenv
 import os
 
 load_dotenv()
-
 def create_connection():
+    
     try:
         connection = mysql.connector.connect(
             host= os.getenv('DB_HOST'),

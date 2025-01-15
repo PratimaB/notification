@@ -12,6 +12,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*{
+  /* background-color: bisque;  */
+  padding: 0;
+  margin: 0;
+}
+html,body{
+  /* background-color: aquamarine; */
+  margin: 0;
+  padding: 0;
+} 
 
 a {
   font-weight: 500;
@@ -24,7 +34,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  display:contents;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;

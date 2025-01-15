@@ -20,11 +20,13 @@ class NotificationRequest(BaseModel):
 
 @api_router.post("/register")
 async def register_user(user: User):
+    print(user)
     connection: PooledMySQLConnection | MySQLConnectionAbstract | None = create_connection()
     if not connection:
         raise HTTPException(status_code=500, detail="Database connection failed")
 
     try:
+
         cursor: MySQLCursorAbstract | Any = connection.cursor()
         query = """
             INSERT INTO users (username, email, password)
@@ -32,6 +34,7 @@ async def register_user(user: User):
         """
         cursor.execute(query, (user.name, user.email, user.password))
         connection.commit()
+        print(query)
         return {"message": "User registered successfully"}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
@@ -53,6 +56,18 @@ async def send_notification(payload: NotificationRequest):
 @api_router.get("/hello")
 async def hello():
     try:
-        return {"message": "Notification -1 sent successfully"}
+        return {"message": "Hello from the server. "}
     except Exception as e:
         return {"error": str(e)}    
+    
+@api_router.post("/show")
+async def show():
+    connection: PooledMySQLConnection | MySQLConnectionAbstract | None = create_connection()
+    if not connection:
+        raise HTTPException(status_code=500, detail="Database connection failed")
+    else:
+        print(connection)
+    try:
+        return {"message": "Hello from the server. "}
+    except Exception as e:
+        return {"error": str(e)}      
