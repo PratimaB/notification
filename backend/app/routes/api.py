@@ -97,7 +97,7 @@ async def get_notifications():
         cursor.close()
         connection.close()
 
-# Login payload
+# Login payload for user
 @api_router.post("/login")
 async def login_user(data: LoginRequest):
     email = data.email
