@@ -1,14 +1,21 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Navigationbar from "./components/Navigationbar";   
 import Register from "./components/Register";
-import { useEffect } from "react";
+import About from "./components/About";
+import Login from "./components/Login.jsx"; 
+
 import { requestForToken, onMessageListener } from "../firebaseConfig.js";
 
 
 const App = () => {
+    // Request for token on app load
+    const [token,setToken] = useState("");
+
+
   useEffect(() => {
-  // Request for token on app load
-    requestForToken();
+    requestForToken().then((token) => setToken(token)); 
     // Listen for foreground notifications
     onMessageListener()
       .then((payload) => {
@@ -26,7 +33,11 @@ const App = () => {
   return (
     <div>
       <Navigationbar />
-      <Register />
+      <Routes>
+        <Route path="/" element={<Login clienttoken={ token }/>} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
+        </Routes>
     </div>
   );
 };

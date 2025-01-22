@@ -30,7 +30,7 @@ const Register = () => {
 
   return (
     <div style={{ maxWidth: "400px", margin: "auto", padding: "20px" }}>
-      <h1>Register</h1>
+      <h3>Register</h3>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: "15px" }}>
           <label htmlFor="name">Name:</label>
